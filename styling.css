@@ -1,17 +1,38 @@
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
     text-align: center;
+        color: white;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('rutc.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: #f0f0f0;
-    color: white;
-    filter: blur(5px);
+
+    filter: blur(8px); /* Adjust the blur here */
+    z-index: -1; /* Put the blurred background behind the content */
 }
+
+@media (max-width: 768px) {
+    body::before {
+        filter: blur(4px); /* Slightly less blur on mobile for better performance */
+    }
+}
+
 
 header {
     background: #333;
@@ -30,41 +51,41 @@ nav ul li {
 }
 
 nav a {
-    color: white;
+    background-image: linear-gradient(to right, #ff00ff, #4169e1 );
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
     text-decoration: none;
     font-weight: bold;
 }
 
 .hero {
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    color: white;
+    background-image: linear-gradient(45deg, #7b0323, #4169e1, #7b0323 );
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
     padding: 50px 20px;
 }
 
 button {
-    background: #ff6600;
+    background: linear-gradient(45deg, #7b0323, #4169e1, #7b0323 );
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 20px 45px;
     cursor: pointer;
-}
-
-.courses {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-}
-
-.course-card {
-    background: linear-gradient(45deg, #ff00ff, #4169e1, #ff00ff );
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    width: 250px;
+    
+    border-radius: 30px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), 
+            -4px -4px 10px rgba(255, 255, 255, 0.1);
     background-size: 300% 300%;
-    animation: sludgeAnimation 3s infinite alternate ease-in-out;
+    animation: gradientMove 2.5s infinite alternate ease-in-out;
 }
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
 @keyframes sludgeAnimation {
     0% {
         background-position: 0% 50%;
@@ -76,13 +97,52 @@ button {
         background-position: 0% 50%;
     }
 }
+.courses {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.course-card {
+    background: linear-gradient(45deg, #7b0323, #4169e1, #7b0323 );
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    background-size: 300% 300%;
+    opacity: 0; /* Hide initially */
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-out forwards, sludgeAnimation 5s infinite alternate ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.course-card:nth-child(1) { animation-delay: 0.15s, 0.2s; }
+.course-card:nth-child(2) { animation-delay: 0.3s, 0.45s; }
+.course-card:nth-child(3) { animation-delay: 0.45s, 0.7s; }
+.course-card:nth-child(4) { animation-delay: 0.6s, 0.95s; }
+.course-card:nth-child(5) { animation-delay: 0.75s, 1.2s; }
 .course-card:hover {
     background: linear-gradient(45deg, #43cea2, #185a9d, #43cea2);
 }
 
 footer {
-    background: #333;
+    background: rgba(255,255,255,0.3);
     color: white;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 0px;
+    margin-top: auto;
+}
+
+main {
+    flex: 1;
 }
