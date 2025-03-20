@@ -35,11 +35,41 @@ body::before {
 
 
 header {
+    position: relative;
     background: #333;
-    color: white;
     padding: 10px;
 }
 
+header::before {
+    content: ''; /* Create an empty content box */
+    position: absolute; /* Position it relative to the header */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, #ff00ff, #4169e1); /* Gradient for background */
+    z-index: -1; /* Make sure the background stays behind the text */
+}
+
+
+header h1 {
+    animation: newGradient 1.5s infinite alternate ease-in-out;
+    background-image: linear-gradient(45deg, #7b0323, #4169e1, #7b0323);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+@keyframes newGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 nav ul {
     list-style: none;
     padding: 0;
