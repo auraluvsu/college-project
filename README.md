@@ -1,6 +1,6 @@
 <h1 align="center"> College Website Project</h1>
     <p>College project to create a website frontend in HTML and CSS<br>
-       Backend in TypeScript (Node.js & Express.js) as a personal challenge
+       Backend in TypeScript (Node.js & Express.js) as a personal challenge<br>
        Complete with:
        <ul>
         <li>an ORM (Prisma)</li>
@@ -11,7 +11,7 @@
     </p>
 <h1 align="center">TO-DO List</h1>
 <ul>
-    <li>Gradient background for each course card</li>
+    <li><s>Gradient background for each course card</s></li>
     <li>All 8 pages including:</li>
         <ol type="1">
             <li><s>Home</s></li>
