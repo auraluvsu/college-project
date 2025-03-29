@@ -1,5 +1,14 @@
 <h1 align="center"> College Website Project</h1>
-    <p>College project to create a website frontend in HTML and CSS</p>
+    <p>College project to create a website frontend in HTML and CSS<br>
+       Backend in TypeScript (Node.js & Express.js) as a personal challenge
+       Complete with:
+       <ul>
+        <li>an ORM (Prisma)</li>
+        <li>In-memory caching</li>
+        <li>logging/Monitoring using Prometheus/Grafana & Loki</li>
+        <li>Authentication and authorization using OAuth</li>
+       </ul>
+    </p>
 <h1 align="center">TO-DO List</h1>
 <ul>
     <li>Gradient background for each course card</li>
