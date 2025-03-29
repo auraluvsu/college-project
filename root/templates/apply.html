@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Title>Apply To Course</Title>
+    <link rel="icon" type"image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="apply.css">
+</head>
+<body>
+    <header>
+        <h1>Apply for a Course</h1>
+    </header>
+    
+    <main>
+        <section class="application-form">
+            <h2>Application Form</h2>
+            <form action="#" method="POST">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname" required>
+
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname" required>
+
+                <label for="pronoun">Pronouns:</label>
+                <select id="pronoun" name="pronoun" required>
+                    <option value="man">He/Him</option>
+                    <option value="woman">She/Her</option>
+                    <option value="undefined">They/Them</option>
+                </select>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="course">Select Course:</label>
+                <select id="course" name="course" required>
+                    <option value="compsci">Computer Science</option>
+                    <option value="psych">Psychology</option>
+                    <option value="math">Math</option>
+                    <option value="chem">Math</option>
+                    <option value="physics">Physics</option>
+                </select>
+                
+                <label for="message">Why do you want to join?</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p><strong>© 2025 College Courses for Richmond. All Rights Reserved.</strong><br>
+    </footer>
+</body>
+</html>
+

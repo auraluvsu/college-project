@@ -1,0 +1,172 @@
+/* General styling */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Comic Sans MS;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/psych.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #f0f0f0;
+
+    filter: blur(8px); /* Adjust the blur here */
+    z-index: -1; /* Put the blurred background behind the content */
+}
+
+a {
+    color:white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    display: inline-block;
+    position: relative;
+    background-image: linear-gradient(to right, #ff00ff, #4169e1 );
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2 ease-in-out;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #ff00ff;
+    transition: width 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+nav a:hover::after {
+    width: 100%; /* Makes the underline expand */
+}
+
+header {
+
+    position: relative;
+    background: #333;
+    padding: 0px;
+    color: #ff00ff;
+    text-shadow: 
+        2px 2px 5px rgba(0,0,0,0.3),
+        3px 3px 6px rgba(0,0,0,0.3),
+        4px 4px 7px rgba(0,0,0,0.3);
+    text-decoration: none;
+}
+
+header h1 {
+    font-family: Gabriola;
+    font-size: 40px;
+}
+
+/* Course container - flex layout */
+.course-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: linear-gradient(45deg, #ff00ff, #4169e1, #ff00ff );
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: sludgeAnimation 5s infinite alternate ease-in-out;
+}
+
+.course-container h2 {
+    color:black;
+    margin: auto;
+    text-align: center;
+}
+@keyframes sludgeAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Course description */
+.course-description {
+    border-radius: 8px;
+    flex: 2;
+    text-align: left;
+    padding: 15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Apply button section */
+.apply-section {
+    flex: 1;
+    text-align: center;
+}
+
+/* Apply button styling */
+.apply-btn {
+    background: linear-gradient(45deg, #4169e1, #ff00ff, #4169e1);
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.apply-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 15px rgba(0, 191, 255, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .course-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .course-description {
+        padding-right: 0;
+    }
+
+    .apply-section {
+        margin-top: 20px;
+    }
+}
+

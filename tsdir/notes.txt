@@ -1,0 +1,17 @@
+JWT for basic authentication, OAuth for more complex systems like Sign in with Google
+Gonna use OAuth for this project as it has more diversity at its fingertips
+
+Prisma for best practices, scaling and migration to MySQL or Postgres. SQlite for familiarity and less scalable projects
+Gonna use Prisma for best practices and possible migration should i choose that route.
+
+REST vs GraphQL. REST for more simple applications. has problems with over/underfetching though.
+GraphQL is more complex and has a higher learning curve, however is good for scaling and more complex data relationships.
+Gonna use REST for this one due to its simplicity and I dont need to scale right now. Maybe GraphQL in the future?
+
+In memory caching vs Redis. In memory for small projects, Redis for production level and Bigger projects.
+Gonna use In memory for obvious reasons.
+
+Logging and monitoring with Prometheus and Grafana. Prometheus for collecting the data, Grafana for Visualizing it.
+Gonna pair this with Loki, as its made by the same company as Grafana so I can visualize the Logging data too.
+
+Feels like it's gonna be a long but fun project!
