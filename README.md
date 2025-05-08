@@ -18,11 +18,11 @@
             <li>About Us</li>
             <li>Contact</li>
             <li><s>Apply</s></li>
-            <li>Course 1</li>
-            <li>Course 2</li>
-            <li>Course 3</li>
-            <li>Course 4</li>
-            <li>Course 5</li>
+            <li>Psychlogy Course 1</li>
+            <li>Physics Course 2</li>
+            <li>Chemistry Course 3</li>
+            <li>Math Course 4</li>
+            <li>Computer Science Course 5</li>
         </ol>
     <li>Add in at least 4 original/ready-made asset (images, video, etc.)</li>
         <ol type="1">
