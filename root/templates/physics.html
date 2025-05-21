@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics | RUTC</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="physics.css">
+</head>
+<body>
+    <canvas id="solarSystem" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:-1;"></canvas>
+    <script>
+    const canvas = document.getElementById('solarSystem');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const sun = { x: canvas.width / 2, y: canvas.height / 2, radius: 35 };
+
+    const planets = [
+      { name: 'Mercury', radius: 5, orbitRadius: 60, orbitSpeed: 0.024, angle: 0, color: 'gray' },
+      { name: 'Venus', radius: 7, orbitRadius: 90, orbitSpeed: 0.018, angle: 0, color: 'orange' },
+      { name: 'Earth', radius: 8, orbitRadius: 130, orbitSpeed: 0.015, angle: 0, color: 'blue' },
+      { name: 'Mars', radius: 6, orbitRadius: 170, orbitSpeed: 0.012, angle: 0, color: 'red' },
+      { name: 'Jupiter', radius: 15, orbitRadius: 230, orbitSpeed: 0.006, angle: 0, color: '#d2b48c' },
+      { name: 'Saturn', radius: 13, orbitRadius: 280, orbitSpeed: 0.005, angle: 0, color: '#f5deb3' },
+      { name: 'Uranus', radius: 11, orbitRadius: 320, orbitSpeed: 0.004, angle: 0, color: '#afeeee' },
+      { name: 'Neptune', radius: 11, orbitRadius: 360, orbitSpeed: 0.003, angle: 0, color: '#4169e1' },
+    ];
+
+    function drawCircle(x, y, radius, color) {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 15;
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function animate(time = 0) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw Sun
+      drawCircle(sun.x, sun.y, sun.radius, 'yellow');
+
+      // Draw planets
+      planets.forEach(planet => {
+        planet.angle += planet.orbitSpeed; // Move the planet
+
+        const x = sun.x + Math.cos(planet.angle) * planet.orbitRadius;
+        const y = sun.y + Math.sin(planet.angle) * planet.orbitRadius;
+
+        drawCircle(x, y, planet.radius, planet.color);
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+    </script>
+    <header>
+        <h1><a href="index.html">A-Level Physics</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/aboutus.html">About Us</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="course-container">
+        <section class="course-description">
+            <h2>About This Course</h2>
+            <p>
+               Explore the fundamental laws governing our universe with our A-Level Physics course.
+               This challenging and insightful programme develops your understanding of the physical world,
+               from the subatomic to the cosmic.<br><br>
+               You'll investigate core areas such as:
+               <ul>
+                   <li><strong>Mechanics:</strong> Forces, Motion, Energy<br></li>
+                   <li><strong>Electricity:</strong> Circuits, fields and electromagnetism<br></li>
+                   <li><strong>Waves:</strong> Light, sound and behaviour of matter<br></li>
+                   <li><strong>Materials:</strong> Properties & behaviour of matter<br></li>
+                </ul>
+            </p>
+            <p>
+            This course builds strong problem-solving, analytical, and practical skills.
+            Our dedicated tutors will guide you through experiments 
+            and complex theories, fostering a deep scientific understanding.
+            <br>
+            Ideal for those with a strong aptitude for science and maths,
+            A-Level Physics is excellent preparation for university degrees in physics, 
+            engineering, computer science, and other scientific fields,
+            leading to diverse and exciting careers.
+            </p>
+            <p>
+                Why study A-Level Physics at RUTC?
+                <ul>
+                    <li>Expert tuition from experienced and passionate Physicists.</li>
+                    <li>Hands on practical experience in well-equiped facilities.</li>
+                    <li>Excellent preparation for university and future careers.</li>
+                </ul>
+            </p>
+        </section>
+
+        <aside class="apply-section">
+            <button class="apply-btn"><a href="apply.html">Apply Now</a></button>
+        </aside>
+    </main>
+
+    <footer>
+        <p><strong>© 2025 College Courses for Richmond. All Rights Reserved.</strong></p>
+    </footer>
+</body>
+</html>
+
