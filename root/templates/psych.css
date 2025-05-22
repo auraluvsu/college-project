@@ -7,25 +7,9 @@ body {
     padding: 0;
     font-family: Comic Sans MS;
     font-size: 15px;
-    color: black;
+    color: white;
     text-align: center;
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/psych.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #f0f0f0;
-    filter: blur(6px); /* Adjust the blur here */
-    z-index: -1; /* Put the blurred background behind the content */
+    background-color: #0d0d0d;
 }
 
 a {
@@ -42,7 +26,18 @@ nav ul li {
     margin: 0 15px;
 }
 
+canvas#neuronCanvas { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display:block;
+    width:100%;
+    pointer-events: auto;
+}
+
 nav a {
+    z-index:2;
     display: inline-block;
     position: relative;
     background-image: linear-gradient(to right, #ff00ff, #4169e1 );
@@ -71,9 +66,7 @@ nav a:hover::after {
 }
 
 header {
-
     position: relative;
-    background: #333;
     padding: 0px;
     color: #ff00ff;
     text-shadow: 
@@ -83,19 +76,27 @@ header {
     text-decoration: none;
 }
 
+.floating-title a {
+    position:relative;
+    color: #ff00ff;
+    z-index:3;
+}
+
 header h1 {
     font-family: Gabriola;
     font-size: 40px;
+    color:black;
 }
 
 /* Course container - flex layout */
 .course-container {
+    z-index:2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1000px;
     margin: 40px auto;
-    background: rgba(255, 255, 255, 0.5);
+    background: transparent;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -104,7 +105,7 @@ header h1 {
 }
 
 .course-container h2 {
-    color:black;
+    color:white;
     margin: auto;
     text-align: center;
 }
@@ -129,6 +130,10 @@ header h1 {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
 }
 
+
+a {
+    text-decoration: none;
+}
 /* Apply button section */
 .apply-section {
     flex: 1;
@@ -170,3 +175,6 @@ header h1 {
     }
 }
 
+footer {
+    color:white;
+}

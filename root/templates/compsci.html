@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science | RUTC</title>
+    <link rel="icon" type"image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="compsci.css">
+</head>
+<body>
+    <canvas id="matrix"></canvas>
+    <div class="content">
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "アカサタナハマヤラワ0123456789ABCDEF";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+
+        const drops = Array.from({ length: columns }).fill(1);
+
+        function draw() {
+          ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          ctx.fillStyle = "#0F0";
+          ctx.font = fontSize + "px monospace";
+
+          drops.forEach((y, i) => {
+            const text = letters[Math.floor(Math.random() * letters.length)];
+            const x = i * fontSize;
+
+            ctx.fillText(text, x, y * fontSize);
+
+            if (y * fontSize > canvas.height && Math.random() > 0.975) {
+              drops[i] = 0;
+            }
+
+            drops[i]++;
+          });
+        }
+
+        setInterval(draw, 50);
+
+        window.addEventListener("resize", () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+    </script>
+    <header>
+        <h1>
+        <a href="index.html" class="heading-1">A-Level Computer Science</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="/aboutus.html">About Us</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="course-container">
+        <section class="course-description">
+            <h2>About This Course</h2>
+            <p>
+                Step into the exciting world of digital innovation with our A-Level Computer Science course.
+                This dynamic programme goes beyond using computers, 
+                teaching you how they work and how to create your own software.
+                You'll explore fundamental concepts such as:<br>
+                <ul>
+                    <li><strong>Programming:</strong> Learn to write code and develop solutions</li>
+                    <li><strong>Computational Thinking:</strong> Problem-solving through decomposition and abstraction</li>
+                    <li><strong>Data Structures & Algorithms:</strong> Efficient ways to organize and process information</li>
+                    <li><strong>Computer Systems:</strong> How hardware and software interact</li>
+                </ul>
+            </p>
+            <p>
+            This course hones your logical thinking, problem-solving, 
+            and practical coding skills. Our experienced tutors will guide 
+            you through theory and hands-on projects,
+            fostering your creativity and analytical abilities.
+            Ideal for students fascinated by technology, problem-solving, 
+            and building digital solutions, A-Level Computer Science is excellent preparation 
+            for university degrees in computer science, software engineering, AI, and related fields,
+            leading to highly sought-after careers.
+            </p>
+            <p>
+                Why study A-Level Computer Science at RUTC?
+                <ul>
+                    <li>Expert tuition from experienced and Passionate Computer Specialists.</li>
+                    <li>Hands-on programming and project development</li>
+                    <li>Strong links to industry-relevant skills</li>
+                    <li>Opportunities for collaborative project work and innovation</li>
+                    <li>Access to industry-standard software and development tools</li>
+                </ul>
+            </p>
+        </section>
+
+        <aside class="apply-section">
+            <button class="apply-btn"><a href="apply.html">Apply Now</a></button>
+        </aside>
+    </main>
+
+    <footer>
+        <p><strong>© 2025 College Courses for Richmond. All Rights Reserved.</strong></p>
+    </footer>
+</body>
+</html>
+

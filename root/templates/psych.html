@@ -8,8 +8,137 @@
     <link rel="stylesheet" href="psych.css">
 </head>
 <body>
+    <canvas id="neuronCanvas"></canvas>
+      <script>
+        const canvas = document.getElementById('neuronCanvas');
+        const ctx = canvas.getContext('2d');
+        resizeCanvas();
+
+        canvas.style.pointerEvents = "auto";
+
+        window.addEventListener('resize', resizeCanvas);
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        const nodes = [];
+        const numNodes = 80;
+
+        for (let i = 0; i < numNodes; i++) {
+          nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: 2 + Math.random() * 2
+          });
+        }
+
+        let selectedNode = null;
+        let isDragging = false;
+
+        const mouse = {
+          x: null,
+          y: null
+        };
+
+        canvas.addEventListener('mousedown', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
+
+          for (let node of nodes) {
+            const dx = mouseX - node.x;
+            const dy = mouseY - node.y;
+            if (Math.sqrt(dx * dx + dy * dy) < node.radius + 5) {
+              selectedNode = node;
+              isDragging = true;
+              break;
+            }
+          }
+        });
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDragging && selectedNode) {
+                const rect = canvas.getBoundingClientRect();
+                selectedNode.x = e.clientX - rect.left;
+                selectedNode.y = e.clientY - rect.top;
+                selectedNode.vx = 0;
+                selectedNode.vy = 0;
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            if (selectedNode) {
+                selectedNode.vx = (Math.random() - 0.5) *0.5;
+                selectedNode.vy = (Math.random() - 0.5) *0.5;
+            }
+            isDragging = false;
+            selectedNode = null;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            if (selectedNode) {
+                selectedNode.vx = (Math.random() - 0.5) *0.5;
+                selectedNode.vy = (Math.random() - 0.5) *0.5;
+            }
+            isDragging = false;
+            selectedNode = null;
+        });
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Draw connections
+          for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+              const dx = nodes[i].x - nodes[j].x;
+              const dy = nodes[i].y - nodes[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 120) {
+                ctx.strokeStyle = `rgba(0, 255, 200, ${1 - dist / 120})`;
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(nodes[i].x, nodes[i].y);
+                ctx.lineTo(nodes[j].x, nodes[j].y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Draw and move nodes
+          for (let node of nodes) {
+            if (!isDragging || selectedNode !== node) {
+                node.x += node.vx;
+                node.y += node.vy;
+
+                // Bounce off walls
+                if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+                if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+            }
+
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0, 255, 180, 0.9)';
+            ctx.shadowColor = 'aqua';
+            ctx.shadowBlur = 10;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+
+          requestAnimationFrame(draw);
+        }
+
+        draw();
+      </script>
     <header>
-        <h1> A-Level Psychology</h1>
+        <div class="floating-title">
+            <h1>
+                <a href="index.html">A-Level Psychology</a>
+            </h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="/aboutus.html">About Us</a></li>

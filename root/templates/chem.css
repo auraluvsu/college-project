@@ -11,6 +11,8 @@ body {
     text-align: center;
 }
 
+
+
 body::before {
     content: '';
     position: absolute;
@@ -88,6 +90,7 @@ header {
 }
 
 header h1 {
+    z-index:9999;
     font-family: Gabriola;
     font-size: 40px;
 }
@@ -172,4 +175,8 @@ header h1 {
     .apply-section {
         margin-top: 20px;
     }
+}
+
+footer {
+    color:white;
 }

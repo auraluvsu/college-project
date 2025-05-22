@@ -18,27 +18,23 @@
             <li>About Us</li>
             <li>Contact</li>
             <li><s>Apply</s></li>
-            <li>Psychlogy Course 1</li>
-            <li>Physics Course 2</li>
-            <li>Chemistry Course 3</li>
-            <li>Math Course 4</li>
-            <li>Computer Science Course 5</li>
+            <li><s>Psychlogy Course 1</s></li>
+            <li><s>Physics Course 2</s></li>
+            <li><s>Chemistry Course 3</s></li>
+            <li><s>Math Course 4</s></li>
+            <li><s>Computer Science Course 5</s></li>
         </ol>
     <li>Add in at least 4 original/ready-made asset (images, video, etc.)</li>
         <ol type="1">
-            <li>RUTC Logo</li>
+            <li><s>RUTC Logo</s></li>
             <li>RUTC Location (Dynamic)</li>
-            <li>Computer Science</li>
-            <li>Psychlogy</li>
-            <li>Physics</li>
-            <li>Chemistry</li>
-            <li>Math</li>
+            <li><s>Computer Science</s></li>
+            <li><s>Psychlogy</s></li>
+            <li><s>Physics</s></li>
+            <li><s>Chemistry</s></li>
+            <li><s>Math</s></li>
         </ol>
     <li><s>Include either contact and/or application form</s></li>
     <li>Include map showing the location of the college (preferably interactive)</li>
-    <li>Make all course cards into buttons</li>
-    <li>Add depth to course cards</li>
+    <li><s>Add depth to course cards</s></li>
 </ul>
-<h2>To watch me stream the building of this creation Click
-    <a href="https://twitch.tv/auraluvsuxo target="_blank" rel="noopener noreferrer"><u>Here</u></a>
-</h2>

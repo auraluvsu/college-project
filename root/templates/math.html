@@ -4,13 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Psychology | RUTC</title>
+    <title>Math | RUTC</title>
     <link rel="icon" type"image/x-icon" href="../images/logo.png">
     <link rel="stylesheet" href="math.css">
 </head>
 <body>
+    <canvas id="equationCanvas"></canvas>
+      <script>
+        const canvas = document.getElementById('equationCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Resize canvas to fill screen
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Some iconic mathy bits
+        const symbols = [
+          "E = mc²", "∑", "π", "∞", "√2", "∫x dx", "f(x) = x²", "Δ", "θ", "lim x→0", "cos(θ)", "log(x)", "∇·E = ρ/ε₀"
+        ];
+
+        // Each symbol is a floating object
+        const particles = [];
+
+        for (let i = 0; i < 50; i++) {
+          particles.push({
+            text: symbols[Math.floor(Math.random() * symbols.length)],
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            speed: 0.3 + Math.random() * 0.7,
+            fontSize: 16 + Math.random() * 20,
+            opacity: 0.4 + Math.random() * 0.6
+          });
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          for (let p of particles) {
+            ctx.font = `${p.fontSize}px monospace`;
+            ctx.fillStyle = `rgba(0, 255, 180, ${p.opacity})`;
+            ctx.fillText(p.text, p.x, p.y);
+
+            p.y -= p.speed;
+
+            // When it floats off screen, respawn it at the bottom
+            if (p.y < -50) {
+              p.y = canvas.height + 20;
+              p.x = Math.random() * canvas.width;
+              p.text = symbols[Math.floor(Math.random() * symbols.length)];
+            }
+          }
+
+          requestAnimationFrame(draw);
+        }
+
+        draw();
+      </script>
     <header>
-        <h1> A-Level Maths</h1>
+        <h1>
+            <a href="index.html" class="heading-1">A-Level Maths</a>
+        </h1>
         <nav>
             <ul>
                 <li><a href="/aboutus.html">About Us</a></li>
@@ -35,14 +92,14 @@
                 </ul>
             </p>
             <p>
-                Why study A-Level Psychology at RUTC?
+                Why study A-Level Maths at RUTC?
                 <ul>
-                    <li>Expert tuition from experienced and passionate psychology specialists.</li>
-                    <li>Access to state-of-the-art learning resources and facilities.</li>
-                    <li>Opportunities to engage in practical research and data analysis.</li>
+                    <li>Expert tuition from experienced and passionate Mathematicians specialists.</li>
+                    <li>Access to comprehensive resources and dedicated study support.</li>
+                    <li>Opportunities to participate in mathematical challenges and competitions.</li>
                     <li>A supportive and collaborative learning environment.</li>
                     <li>Excellent preparation for university and future careers.</li>
-                    <li>Strong focus on the application of psychology to real life scenarios.</li>
+                    <li>A strong track record of student success</li>
                 </ul>
             </p>
         </section>
