@@ -12,6 +12,11 @@ body {
     padding: 0px;
 }
 
+a {
+    text-decoration:none;
+    color: white;
+}
+
 body::before {
     content: '';
     position: absolute;
